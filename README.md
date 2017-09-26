@@ -1,1 +1,1 @@
-#vue_learning_demo
+#根据视频学习vue.js时的基础语法demo
