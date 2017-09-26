@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>v-bind</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="../assets/js/vue.js"></script>
+    </head>
+    <body>
+        <h1>v-bind</h1>
+        <hr>
+        <div id="app">
+           <p><img :src="imgUrl" width="200px"></p>
+           <p><a v-bind:href="webUrl" target="_blank">wann</a></p>
+            <div :class="className"> 1.绑定Class </div>
+            <div :class="{classA:isOk}"> 2.绑定Class中的判断 </div>
+            <div>
+                <input type="checkbox" id="isOk" v-model="isOk">
+                <label for="isOk">{{isOk}}</label>
+            </div>
+            <hr>
+            <div :class="[classA,classB]"> 3.绑定Class数组 </div>
+            <div :class="isOk?classA:classB"> 4.绑定Class三元运算符 </div>
+            <hr>
+            <div :style="{color:cf,fontSize:font}">5.绑定style</div>
+            <div :style="styleObj">6.绑定style对象</div>
+        </div>
+        <style>
+        .classA{
+            color: red;
+        }
+        .classB{
+            font-size:150%;
+        }
+        </style>
+
+        <script type="text/javascript">
+            var app = new Vue({
+                el:'#app',
+                data:{
+                    styleObj:{
+                        color:'green',
+                        fontSize:'50px',
+                    },
+                    cf:'red',
+                    font:'20px',
+                    classA:'classA',
+                    classB:'classB',
+                    isOk:false,
+                    className:'classA',
+                    webUrl:'http://wannau.me',
+                    imgUrl:'http://www.padmag.cn/wp-content/uploads/heritage1.jpg'
+                }
+            })
+        </script>
+    </body>
+</html>

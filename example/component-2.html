@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Component-2</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>Component-2</h1>
+    <h5>props属性设置</h5>
+    <hr>
+    <div id="app">
+        <cat :here="message"></cat>
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data:{
+                message:'你家'
+            },
+            components: {
+                "cat": {
+                    template: `<p style="color:blue">局部的cat,From{{here}}</p>`
+                    ,props:["here"],
+                },
+            },
+        });
+    </script>
+</body>
+
+</html>

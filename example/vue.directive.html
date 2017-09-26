@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Vue.directive 自定义指令</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>Vue.directive 自定义指令</h1>
+    <hr>
+    <div id="app">
+        <div v-wann="color">{{num}}</div>
+        <p><button @click="add">add</button></p>
+        <hr>
+        <div><button v-tip="onf">用自定义指令绑定鼠标事件</button></div>
+    </div>
+
+    <p>
+        <button onclick="unbind()">解绑</button>
+    </p>
+
+    <script type="text/javascript">
+        function unbind() {
+            app.$destroy();
+        }
+        // Vue.directive("wann",function (el,binding) {
+        //     // console.log(el);
+        //     // console.log(binding);
+        //     // console.log(binding.name);
+        //     // console.log(binding.value);
+        //     // console.log(binding.expression);
+        //     el.style="color:"+binding.value;
+        // });
+        Vue.directive("wann", {
+            bind: function (el, binding) { //被绑定
+                el.style = "color:" + binding.value;
+                console.log('1 - bind');
+            },
+            inserted: function () { //绑定到节点
+                console.log('2 - inserted');
+            },
+            update: function () { //组件更新
+                console.log('3 - update');
+            },
+            componentUpdated: function () { //组件更新完成
+                console.log('4 - componentUpdated');
+            },
+            unbind: function () { //解绑
+                console.log('5 - unbind');
+            }
+        });
+
+        Vue.directive("tip", {
+            bind: function (el, binding) { //被绑定
+                console.log('1 - tip - bind');
+                el.onmousemove = binding.value;
+                console.log(binding);
+            },
+            inserted: function () { //绑定到节点
+                console.log('2 - tip -inserted');
+            },
+            update: function () { //组件更新
+                console.log('3 - tip - update');
+            },
+            componentUpdated: function () { //组件更新完成
+                console.log('4 - tip - componentUpdated');
+            },
+            unbind: function () { //解绑
+                console.log('5 -  tip -unbind');
+            }
+        });
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                num: 10,
+                color: '#66ccff',
+            },
+            methods: {
+                add: function () {
+                    this.num++;
+                },
+                onf: function () {
+                    alert('nini');
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
