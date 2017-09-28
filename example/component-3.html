@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Component-3</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>Component-3</h1>
+    <hr>
+    <div id="app">
+        <wann v-bind:text="message"></wann>
+    </div>
+
+    <script type="text/javascript">
+
+        let catComponent={
+            template:`<div style="color:#66ccff;">wann的子组件一只猫</div>`
+        }
+        var wannComponent = {
+            template: `<div>
+            <p style="color:green">{{text}}</p>
+            <cat></cat></div>
+            `,
+            props:["text"],
+            components:{"cat":catComponent}
+        }
+        var app = new Vue({
+            el: '#app',
+            data:{
+                message:"wann组件呢"
+            },
+            components: {
+                "wann": wannComponent
+            },
+        });
+    </script>
+</body>
+
+</html>

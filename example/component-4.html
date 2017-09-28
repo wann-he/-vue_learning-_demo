@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>component-4</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="../assets/js/vue.js"></script>
+    </head>
+    <body>
+        <h1>component-4</h1>
+        <hr>
+        <div id="app">
+            <component :is="who"></component>
+        </div>
+
+        <script type="text/javascript">
+        var  componentA={
+            template:`<div>A</div>`
+        }
+        var  componentB={
+            template:`<div>B</div>`
+        }
+        var  componentC={
+            template:`<div>C</div>`
+        }
+            var app = new Vue({
+                el:'#app',
+                data:{
+                    who:'componentB'
+                },
+                components:{
+                    "componentA":componentA,
+                    "componentB":componentB,
+                    "componentC":componentC,
+                }
+            })
+        </script>
+    </body>
+</html>
