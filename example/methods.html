@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Methods Option 方法选项</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="../assets/js/vue.js"></script>
+    </head>
+    <body>
+        <h1>Methods Option 方法选项</h1>
+        <hr>
+        <div id="app">
+            {{a}}   $event(交互性要求高时使用)
+            <p><button @click="add(2)">add</button></p>
+            <p><btn @click.native="add(2)"></btn></p>
+        </div>
+
+        <button onclick="app.add(10)">外部Add(onclick调用,使用声明的vue.方法名调用)</button>
+
+        <hr>
+        <ol><li>methods传递参数,与JS function传参类似</li>
+            <li>methods中的$event参数</li>
+            <li>native  给组件绑定构造器里的原生事件</li>
+            <li>作用域外部调用构造器里的方法</li>
+        </ol>
+
+        <script type="text/javascript">
+        var btn = {
+            template:`<button>btn组件(@click.native)</button>`
+        }
+            var app = new Vue({
+                el:'#app',
+                data:{
+                    a:1
+                },
+                components:{
+                    "btn":btn
+                },
+                methods:{
+                    add:function(num){
+                        if(num!=''){
+                            this.a+=num;
+                        } else {
+                            this.a++;
+                        }
+                        // console.log(event);
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
