@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>mixinsOption</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="../assets/js/vue.js"></script>
+    </head>
+    <body>
+        <h1>mixinsOption</h1>
+        <hr>
+        <div id="app">
+            <p>{{num}}</p>
+            <p><button @click="add">add</button></p> 
+        </div>
+        <hr>
+        <p>mixin的钩子函数执行顺序 : 全局mixin > 混入mixin的钩子函数 > 构造器内</p>
+
+        <script type="text/javascript">
+            var addLog = {
+                updated:function(){
+                    console.log("数据发生了变化，变成了"+this.num);
+                }
+            };
+            Vue.mixin({
+                updated:function(){
+                    console.log("全局的mixin");
+                }
+            });
+            var app = new Vue({
+                el:'#app',
+                data:{
+                    num:1
+                },
+                methods:{
+                    add:function(){
+                        this.num++;
+                    }
+                },
+                mixins:[addLog],
+                updated:function(){
+                    console.log('原生的updated');
+                }
+            })
+        </script>
+    </body>
+</html>

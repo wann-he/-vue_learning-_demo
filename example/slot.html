@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>HelloWorld</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>HelloWorld</h1>
+    <hr>
+    <div id="app">
+        <wann>
+            <span slot="blogUrl">{{wannData.blogUrl}}</span>
+            <span slot="name">{{wannData.name}}</span>
+            <span slot="skill">{{wannData.skill}}</span>
+        </wann>
+    </div>
+
+    <template id='tep'>
+        <div>
+            <p>博客地址：<slot name="blogUrl"></slot></p>
+            <p>網名：<slot name="name">nihao</slot></p>
+            <p>技術類型：<slot name="skill"></slot></p>
+        </div>
+
+    </template>
+
+    <hr>
+    <ul>
+            slot的使用需要两步：
+        <li>1、在HTML的组件中用slot属性传递值。</li>
+        <li>2、在组件模板中用<slot></slot>标签接收值。</li>
+    </ul>
+
+    <script type="text/javascript">
+        var wann = {
+            template: `#tep`
+        }
+        var app = new Vue({
+            el: '#app',
+            data: {
+                wannData: {
+                    blogUrl: 'wannau.me',
+                    name: 'wann',
+                    skill: 'java'
+                }
+            },
+            components: {
+                "wann": wann
+            }
+        });
+
+    </script>
+</body>
+
+</html>

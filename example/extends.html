@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>extendsOption</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="../assets/js/vue.js"></script>
+    </head>
+    <body>
+        <h1>extendsOption</h1>
+        <hr>
+        <div id="app">
+            <p>{{num}}</p>
+            <p>${num}</p>
+            <p><button @click="add">add</button></p> 
+        </div>
+        <hr>
+        <p>钩子函数执行顺序 : 扩展的钩子函数 > 原生的</p>
+        <p>扩展的methods里与构造函数同名的函数不会被执行</p>
+        <hr>
+        <p>delimiters的作用是改变我们插值的符号。Vue默认的插值是双大括号{{}}。但有时我们会有需求更改这个插值的形式。</p>
+
+        <script type="text/javascript">
+            var extendObj={
+                updated:function(){
+                    console.log('扩展的updated');
+                }
+            }
+            var app = new Vue({
+                el:'#app',
+                data:{
+                    num:1
+                },
+                methods:{
+                    add:function(){
+                        console.log('原生的方法');
+                        this.num++;
+                    }
+                },
+                updated:function(){
+                    console.log('原生的updated');
+                },
+                extends:extendObj,
+                delimiters:['${','}']
+            })
+        </script>
+    </body>
+</html>

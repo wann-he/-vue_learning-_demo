@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>example Methods Demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>example Methods Demo</h1>
+    <hr>
+    <div id="app">
+
+    </div>
+
+    <p>
+        <button onclick="destroy()">卸载</button>
+    </p>
+    <p>
+        <button onclick="reload()">刷新</button>
+    </p>
+    <p>
+        <button onclick="tick()">更改数据 </button>
+    </p>
+
+    <hr>
+    <li>$mount方法是用来挂载我们的扩展的</li>
+    <li>$destroy() 卸载方法</li>
+    <li>$forceUpdate() 更新方法</li>
+    <li>$nextTick() 数据修改方法</li>
+
+    <script type="text/javascript">
+        var wann = Vue.extend({
+            template: `<p>{{message}}</p>`,
+            data: function () {
+                return {
+                    message: 'Hello,I am wann'
+                }
+            },
+            mounted: function () {
+                console.log('mounted 被创建');
+            },
+            destroyed: function () {
+                console.log('destory 被执行');
+            },
+            updated: function () {
+                console.log('updated 更新了');
+            }
+        });
+
+        var vm = new wann().$mount("#app");
+        function destroy() {
+            vm.$destroy();
+        }
+        function reload() {
+            vm.$forceUpdate();
+        }
+
+        function tick() {
+            vm.message = "update message info ";
+            vm.$nextTick(function () {
+                console.log('message更新完后我被调用了');
+            })
+        }
+
+    </script>
+</body>
+
+</html>
