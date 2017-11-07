@@ -9,13 +9,18 @@
             <button @click="$store.commit('reduce')">减1</button>
             <button @click="reduce">减1</button>
         </p>
+<hr>
+        <p>
+            <button @click="addAction">加100</button>
+            <button @click="reduceAciton">减1</button>
+        </p>
   </div>
 </template>
 
 
 <script>
 import store from "@/vuex/store";
-import { mapState, mapMutations,mapGetters} from "vuex";
+import { mapState, mapMutations, mapGetters,mapActions } from "vuex";
 
 export default {
   data() {
@@ -25,10 +30,13 @@ export default {
   },
   store,
   computed: {
-    ...mapState(["count"]),
-    ...mapGetters(["count"])
+    ...mapState(["count"])
+    // ...mapGetters(["count"])
   },
-  methods: mapMutations(["add", "reduce"])
+  methods: {
+    ...mapMutations(["add", "reduce"]),
+    ...mapActions(['addAction', 'reduceAciton'])
+  }
 
   //   computed:mapState({
   //       count:state => state.count
