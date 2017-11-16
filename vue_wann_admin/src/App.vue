@@ -1,11 +1,21 @@
 <template>
   <div id="app">
-    <!-- <top-nav></top-nav> -->
-    <left-nav></left-nav>
-    <!-- <leftNav></leftNav> -->
-    <div class="main">
-      <router-view/>
-    </div>
+    <el-container>
+      <el-header>
+        <top-nav></top-nav>
+      </el-header>
+      <el-container>
+        <el-aside >
+          <left-nav></left-nav>  
+        </el-aside>
+        <el-main>
+          <router-view/>
+        </el-main>
+      </el-container>
+     
+      <el-footer></el-footer>
+    </el-container>
+       
   </div>
 </template>
 
@@ -30,19 +40,16 @@ export default {
   color: #2c3e50;
   margin-top: 0px;
 }
-html{
+html,
+body {
+  margin: 0;
   height: 100%;
-  width: 100%;
 }
-html body{
-  height: 100%;
-  width: 100%;
-}
-.main {
-  float: righ;
+/* .main {
+  float: left;
   width: 95%;
   background-color: #eff2f7;
   height: 100%;
   overflow: hidden;
-}
+} */
 </style>

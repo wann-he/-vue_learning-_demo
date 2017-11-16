@@ -1,10 +1,10 @@
 <template>
-  <div class="left-nav">
-    <!-- <el-radio-group v-model="isCollapse" >
+  <div id="left-nav">
+    <el-radio-group v-model="isCollapse" style="margin-top:10px;margin-bottom:10px;">
         <el-radio-button :label="false">展开</el-radio-button>
         <el-radio-button :label="true">收起</el-radio-button>
-    </el-radio-group> -->
-    <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+    </el-radio-group>
+    <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse" background-color="#545c64">
         <el-submenu index="1">
             <template slot="title">
               <i class="el-icon-location"></i>
@@ -50,21 +50,17 @@ export default {
       handleClose(key, keyPath) {
         console.log(key, keyPath);
       }
-    }
+    },
+    mounted:function(){
+    var bodyHeight=document.body.clientHeight;
+    // document.getElementById("left-nav").style.height=bodyHeight+'px';
+  }
 }
 </script>
 
 <style scoped>
-.el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 200px;
-    min-height: 400px;
-  }
-  .left-nav{
-    color: #fff;
-    font-size: 10px;
-    height: 100%;
-    background-color: #1d8ce0;
-    float: left;
-    width: 5%;
-}
+/* .el-menu-vertical-demo:not(.el-menu--collapse) { */
+    /* width: 200px; */
+    /* min-height: 400px; */
+  /* } */
 </style>
