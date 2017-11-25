@@ -1,46 +1,46 @@
 <template>
-<div id="app">
-  <el-container class="con_section">
-    <el-header class="blueheader">
-      <h2 class="headlogo">我的公司logo</h2>
-      <el-col :span="3" class="userinfo">
-        <el-dropdown>
-          <i class="el-icon-setting" style="margin-right: 15px"></i>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>查看</el-dropdown-item>
-            <el-dropdown-item>新增</el-dropdown-item>
-            <el-dropdown-item>删除</el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
-        <span>王小虎</span>
-      </el-col>
-    </el-header>
-    <el-container>
-      <el-aside style="flex: 0 0 230px;width: 230px;background:#eef1f6">
-        <el-menu default-active="1" class="el-menu-vertical-demo" @select="handleSelect">
-          <el-submenu index="1">
-            <template slot="title"><i class="el-icon-message"></i>管理系统</template>
-            <el-menu-item index="1">列表管理</el-menu-item>
-            <el-menu-item index="2">表单管理</el-menu-item>
-          </el-submenu>
-        </el-menu>
-      </el-aside>
-      <el-main class="home_main">
-        <el-col :span="24" class="breadcrumb-container">
-          <strong class="title">{{$route.name}}</strong>
-          <el-breadcrumb separator="/" class="breadcrumb-inner">
-            <el-breadcrumb-item v-for="item in $route.matched" :key="item.path">
-              {{ item.name }}
-            </el-breadcrumb-item>
-          </el-breadcrumb>
-        </el-col>
-        <el-col :span="24">
-          <div style="margin-top:10px">
-            <router-view></router-view>
-          </div>
-        </el-col>
-      </el-main>
-    </el-container>
+<div>
+  <el-container>
+    nini
+        <el-form ref="form" :model="form" style="margin:10px;">
+            <el-form :inline="true" :model="filters" class="demo-form-inline">
+                <el-row>
+                    <el-col :xs="12" :sm="12" :md="12" :lg="12" style="margin-left: 12px;">
+                        <el-form-item label="维护项">
+                            <el-input v-model="filters.strTitle" placeholder="维护项" style="width: 160px;"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :xs="10" :sm="10" :md="10" :lg="10">
+                        <el-form-item label="维护内容">
+                            <el-input v-model="filters.strContent" placeholder="维护内容" style="width: 180px;"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :xs="24" :sm="24" :md="24" :lg="12">
+                        <el-form-item label-width="80px" label="创建时间" class="postInfo-container-item">
+                            <el-date-picker
+                                    v-model="filters.createTime"
+                                    type="datetimerange"
+                                    :picker-options="pickerOptions2"
+                                    placeholder="选择时间范围"
+                                    align="right">
+                            </el-date-picker>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :xs="24" :sm="24" :md="24" :lg="12">
+                        <el-form-item label-width="80px" label="更新时间" class="postInfo-container-item">
+                            <el-date-picker
+                                    v-model="filters.updateTime"
+                                    type="datetimerange"
+                                    :picker-options="pickerOptions2"
+                                    placeholder="选择时间范围"
+                                    align="right">
+                            </el-date-picker>
+                        </el-form-item>
+                    </el-col>
+                  
+                </el-row>
+            </el-form>
+        </el-form>
   </el-container>
 </div>
 </template>
@@ -82,7 +82,7 @@
   .blueheader {
     height: 60px;
     line-height: 60px;
-    background: #67c23a;
+    background: #66ccff;
     color: #fff;
   }
   .el-menu-item.is-active {

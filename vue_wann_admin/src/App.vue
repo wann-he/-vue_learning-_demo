@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <el-container id="main-con" class="con-section">
-      <el-header id="main-header" style="width:100%">
+    <el-container id="main-con">
+      <el-header>
         <top-nav></top-nav>
       </el-header>
       <el-container id="main-body" style="margin:0px">
-        <el-aside style="flex: 0 0 230px;width: 230px;background:#fff">
-          <left-nav></left-nav>  
+        <el-aside style="flex: 0 0 150px;width:150px;">
+          <left-nav></left-nav>
         </el-aside>
         <el-main style="background:#ccf1f6">
           <router-view/>
         </el-main>
       </el-container>
-      <el-footer style="background:#66ccff"></el-footer>
+      <!-- <el-footer style="background:#66ccff"></el-footer> -->
     </el-container>
        
   </div>
@@ -30,8 +30,6 @@ export default {
   mounted:function(){
     var bodyHeight=document.body.clientHeight;
     document.getElementById("main-con").style.height= bodyHeight + 'px';
-    document.getElementById("main-header").style.height= "5%";
-    document.getElementById("main-body").style.height= "95%";
   }
 };
 </script>
@@ -50,14 +48,7 @@ body {
   margin: 0;
   height: 100%;
 }
-/* .main {
-  float: left;
-  width: 95%;
-  background-color: #eff2f7;
-  height: 100%;
-  overflow: hidden;
-} */
-  .con_section{
+.con_section{
     position: absolute;
     top: 0px;
     bottom: 0px;
